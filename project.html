@@ -1,0 +1,23 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Project</title><link rel="stylesheet" href="style.css"></head>
+<body><header class="top" id="top"></header>
+<main id="main"></main><footer id="foot"></footer>
+<script src="projects.js"></script><script src="common.js"></script>
+<script>
+header();
+const slug = new URLSearchParams(location.search).get('p');
+const i = PROJECTS.findIndex(p => p.slug === slug);
+const m = document.getElementById('main');
+if(i<0){ m.innerHTML='<div class="intro"><h1>Project not found</h1><p><a href="index.html">Back to all projects</a></p></div>'; }
+else{
+ const p=PROJECTS[i], prev=PROJECTS[i-1], next=PROJECTS[i+1];
+ document.title = p.title + " – " + SITE.name;
+ let imgs=""; for(let n=1;n<=p.sheets;n++) imgs+=`<img loading="lazy" src="images/${p.folder}/sheet${n}.jpg" alt="${p.title}, sheet ${n}">`;
+ m.innerHTML = `<section class="proj-head"><a href="index.html">All projects</a><h1>${p.title}</h1>
+  <p class="meta">${p.meta||""}</p><p>${p.text||""}</p></section>
+  <section class="sheets">${imgs}</section>
+  <nav class="pager"><span>${prev?`<a href="project.html?p=${prev.slug}">Previous: ${prev.title}</a>`:""}</span>
+  <span>${next?`<a href="project.html?p=${next.slug}">Next: ${next.title}</a>`:""}</span></nav>`;
+}
+</script></body></html>

@@ -1,0 +1,18 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Portfolio</title><link rel="stylesheet" href="style.css"></head>
+<body><header class="top" id="top"></header>
+<main>
+ <section class="intro"><h1 id="tag"></h1><p>Select a project to view its sheets.</p></section>
+ <section class="grid" id="grid"></section>
+</main><footer id="foot"></footer>
+<script src="projects.js"></script><script src="common.js"></script>
+<script>
+header();
+document.title = SITE.name + " – Portfolio";
+document.getElementById('tag').textContent = SITE.tagline;
+document.getElementById('grid').innerHTML = PROJECTS.map(p =>
+ `<a class="card" href="project.html?p=${p.slug}">
+   <div class="img"><img loading="lazy" src="images/${p.folder}/thumb.jpg" alt="${p.title}"></div>
+   <h2>${p.title}</h2><span>${p.meta||""}</span></a>`).join("");
+</script></body></html>

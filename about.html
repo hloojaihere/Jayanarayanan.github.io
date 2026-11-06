@@ -1,0 +1,13 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>About</title><link rel="stylesheet" href="style.css"></head>
+<body><header class="top" id="top"></header>
+<main><section class="about"><h1>About</h1><p id="a"></p><p id="c"></p></section></main>
+<footer id="foot"></footer>
+<script src="projects.js"></script><script src="common.js"></script>
+<script>
+header();
+document.getElementById('a').textContent = SITE.about;
+document.getElementById('c').innerHTML = `Contact: <a href="mailto:${SITE.email}">${SITE.email}</a>` +
+ (SITE.pdf ? ` · <a href="${SITE.pdf}">Download full portfolio (PDF)</a>` : "");
+</script></body></html>
